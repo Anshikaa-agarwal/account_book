@@ -2,6 +2,7 @@ class CreateTitles < ActiveRecord::Migration[8.1]
   def change
     create_table :titles do |t|
       t.string :name
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

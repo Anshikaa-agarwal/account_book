@@ -35,6 +35,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
     t.datetime "created_at", null: false
     t.string "name"
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_titles_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -57,6 +59,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
 
   add_foreign_key "accounts", "banks"
   add_foreign_key "banks", "users"
+  add_foreign_key "titles", "users"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "titles"
 end
