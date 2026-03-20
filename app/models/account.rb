@@ -6,17 +6,14 @@ class Account < ApplicationRecord
 
   # associations
   belongs_to :bank
-  has_one :user, through: :bank
-  has_many :transactions
+  has_one    :user, through: :bank
+  has_many   :transactions, dependent: :destroy
 
   # validations
-  validates :number, uniqueness: true
-  validates :type, uniqueness: { scope: :bank }
+  validates :number, uniqueness: true, allow_nil: true
+  validates :type, uniqueness: { scope: :bank_id }
 
-  def balance
-    credit_amount = transactions.credit.sum
-    debit_amount = transactions.debit.sum
-
-    credit_amount - debit_amount
+  def latest_transaction
+    transactions.order(date_time: :desc).first
   end
 end
