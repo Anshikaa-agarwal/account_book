@@ -43,7 +43,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
     t.datetime "created_at", null: false
     t.date "date"
     t.bigint "title_id"
-    t.integer "type"
+    t.integer "type", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["title_id"], name: "index_transactions_on_title_id"
