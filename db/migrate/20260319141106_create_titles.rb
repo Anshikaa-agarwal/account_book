@@ -1,4 +1,4 @@
-class CreateTitle < ActiveRecord::Migration[8.1]
+class CreateTitles < ActiveRecord::Migration[8.1]
   def change
     create_table :titles do |t|
       t.string :name
