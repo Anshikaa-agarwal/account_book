@@ -26,7 +26,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
 
   create_table "banks", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.string "name"
+    t.string "name", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_banks_on_user_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
 
   create_table "titles", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.string "name"
+    t.string "name", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_titles_on_user_id"
@@ -55,7 +55,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.string "name"
+    t.string "name", null: false
     t.datetime "updated_at", null: false
   end
 
