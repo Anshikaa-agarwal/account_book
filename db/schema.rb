@@ -45,7 +45,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
     t.decimal "amount", precision: 8, scale: 3, null: false
     t.decimal "balance", precision: 10, scale: 3, default: "0.0", null: false
     t.datetime "created_at", null: false
-    t.datetime "date_time"
+    t.datetime "date_time", null: false
     t.bigint "title_id"
     t.integer "type", null: false
     t.datetime "updated_at", null: false
