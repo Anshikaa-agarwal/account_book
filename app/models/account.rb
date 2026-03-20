@@ -12,4 +12,11 @@ class Account < ApplicationRecord
   # validations
   validates :number, uniqueness: true
   validates :type, uniqueness: { scope: :bank }
+
+  def balance
+    credit_amount = transactions.credit.sum
+    debit_amount = transactions.debit.sum
+
+    credit_amount - debit_amount
+  end
 end
