@@ -15,7 +15,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
   enable_extension "pg_catalog.plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.decimal "balance", precision: 10, scale: 3
+    t.decimal "balance", precision: 10, scale: 3, default: "0.0", null: false
     t.bigint "bank_id", null: false
     t.datetime "created_at", null: false
     t.string "number"
@@ -43,7 +43,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
   create_table "transactions", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.decimal "amount", precision: 8, scale: 3
-    t.decimal "balance", precision: 10, scale: 3
+    t.decimal "balance", precision: 10, scale: 3, default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "date_time"
     t.bigint "title_id"
