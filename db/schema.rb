@@ -10,54 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_19_141152) do
+ActiveRecord::Schema[8.1].define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "accounts", force: :cascade do |t|
-    t.decimal "balance", precision: 8, scale: 3, default: "0.0", null: false
-    t.bigint "bank_id", null: false
-    t.datetime "created_at", null: false
-    t.bigint "number"
-    t.integer "type", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bank_id"], name: "index_accounts_on_bank_id"
-  end
-
-  create_table "banks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name"
-    t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_banks_on_user_id"
-  end
-
-  create_table "titles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name"
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.bigint "account_id", null: false
-    t.decimal "amount"
-    t.datetime "created_at", null: false
-    t.string "date"
-    t.bigint "title_id"
-    t.integer "type"
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_transactions_on_account_id"
-    t.index ["title_id"], name: "index_transactions_on_title_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name"
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "accounts", "banks"
-  add_foreign_key "banks", "users"
-  add_foreign_key "transactions", "accounts"
-  add_foreign_key "transactions", "titles"
 end
